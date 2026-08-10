@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Form</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+  <form action="{{url_for('form')}}" method="post">
+    <input type="text" name="physics" placeholder="physics" required="required" /><br />
+    <input type="text" name="chemistry" placeholder="chemistry" required="required" /><br />
+    <input type="text" name="maths" placeholder="maths" required="required" /><br />
+    <button type="submit" class="btn btn-primary btn-block btn-large">
+      calculate
+    </button>
+    <br />
+    {% if score is defined %}
+    <h1>The average marks is {{score}}</h1>
+    {% if score >= 33 %}
+    <h2 class="success">Congratulations! You have passed the exam</h2>
+    {% else %}
+    <h2 class="danger">Sorry! You Failed the exam</h2>
+    {% endif %}
+    {% endif %}
+  </form>
+
+</body>
+
+</html>
